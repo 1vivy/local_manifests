@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Feature-gap topic overlay.
+
+  Apply AFTER 1vivy-infiniti-base.xml. Each entry re-points a device tree at its
+  staging/feature-gaps/* topic branch instead of the pinned base SHA, so a sync
+  produces a tree containing the in-flight feature-gap work.
+
+  Topics are authored with .tools/rom-topic and gated by `rom-topic verify`;
+  every commit carries Icp-Layer / Icp-Class / Upstream-Half trailers so a sibling
+  org can cherry-pick the complementary half.
+
+  Entries are added here as each topic is pushed and verified.
+-->
+<manifest>
+</manifest>
