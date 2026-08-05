@@ -12,11 +12,22 @@ repo sync
 | File | Purpose |
 |---|---|
 | `local_manifests/1vivy-infiniti-base.xml` | The working base composition: device trees from the `1vivy` forks, camera-port vendor/proprietary lanes, and the crDroid upstream pins. |
-| `local_manifests/1vivy-feature-gaps.xml` | Overlays the device trees onto `staging/feature-gaps/*` topic branches. Apply ON TOP of the base file to build a tree with the in-flight feature-gap work. |
+| `local_manifests/1vivy-feature-gaps.xml` | Self-contained composition that pins the five projects carrying feature-gap work at `staging/feature-gaps/all`. Use it INSTEAD OF the base file, not alongside it. |
 
 `1vivy-infiniti-base.xml` pins the profile targets at their `series.json` `base_sha`, so
 applying the `patches` profile is MANDATORY with it. Do not combine it with
 `infiniti-camera-port/local_manifest`, which pins the same repos at promoted heads — that
 would double-apply.
 
-The feature-gap overlay is topic branches under active development; expect it to move.
+`1vivy-feature-gaps.xml` is self-contained on purpose. repo loads
+`.repo/local_manifests/*.xml` in sorted filename order, so `1vivy-feature-gaps.xml` is
+parsed BEFORE `1vivy-infiniti-base.xml` and could not have overridden it as an overlay;
+dropping both also declares `device/oneplus/infiniti` twice, which repo rejects as a
+duplicate path. Drop exactly one of the two.
+
+`vendor/oneplus/infiniti` is served from `infiniti-camera-port` rather than `1vivy`:
+publishing that branch to `1vivy` requires 189 Git LFS objects (1.84 GiB at HEAD plus
+history) against GitHub's 1 GiB free per-account quota, while `infiniti-camera-port`
+already holds every one of them.
+
+The feature-gap branches are under active development; expect them to move.
