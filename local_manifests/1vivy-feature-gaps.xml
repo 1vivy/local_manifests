@@ -87,7 +87,7 @@
 
   <!-- split v3 camera source repos -->
   <project path="vendor/oneplus/camera-sm8850-common" name="infiniti-camera-port/vendor_oneplus_camera-sm8850-common"
-           remote="github" revision="16.0-infiniti" />
+           remote="github" revision="staging/feature-gaps/all" />
 
   <project path="vendor/oneplus/camera-infiniti" name="infiniti-camera-port/vendor_oneplus_camera-infiniti"
            remote="github" revision="16.0" />
