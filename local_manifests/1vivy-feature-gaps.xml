@@ -140,7 +140,7 @@
            remote="github" revision="16.0" />
 
   <project path="proprietary/vendor/oneplus/camera-sm8850-common" name="infiniti-camera-port/proprietary_vendor_oneplus_camera-sm8850-common"
-           remote="github" revision="16.0-infiniti" />
+           remote="github" revision="16.0" />
 
   <!-- ==== non-matrix sm8850 device closure ==== -->
 
